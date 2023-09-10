@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Expenses Tracker</title>
+    <link rel="stylesheet" href="/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <nav class="nav2">
+        <div class="container2">
+            <ul>
+                <li> <h1>Data Insights</h1></li>
+                
+            </ul>
+        </div>
+    </nav>
+    <nav id='menu'>
+    <input type='checkbox' id='responsive-menu' onclick='updatemenu()'><label></label>
+    <ul>
+      <li><a href='/'>Home</a></li>
+      <li><a href='/dashboard'>Dashboard</a></li>
+      <li><a class='dropdown-arrow' href='#'>Manage Finance</a>
+        <ul class='sub-menus'>
+          <li><a href='/expenses'>Expense Tracking</a></li>
+          <li><a href='/budget'>Budget Management</a></li>
+          <li><a href='/transactionhistory'>Transaction History</a></li>
+          <li><a href='/datainsights'>Data Insights</a></li>
+        </ul>
+      </li>
+      <li><a href='/auth/logout'>Logout</a></li>
+      
+    </ul>
+  </nav>
+    
+    <main>
+      <br><br>
+        <h1>Monthly Expense Chart</h1>
+        <div>
+            <canvas id="expensePieChart"></canvas>
+        </div>
+        <script>
+            // JavaScript to render the pie chart
+            let ctx = document.getElementById('expensePieChart').getContext('2d');
+            let data = {{pieChartData}};
+
+            let expensePieChart = new Chart(ctx, {
+                type: 'pie',
+                data: data,
+                options: {}
+            });
+        </script>
+    </main>
+
+</body>
+</html>
