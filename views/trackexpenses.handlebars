@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Expenses Tracker</title>
+    <link rel="stylesheet" href="/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+   <script>
+        var total=0;
+        var expenses=0;
+   </script>
+</head>
+<body>
+    <nav class="nav2">
+        <div class="container2">
+            <ul>
+                <li> <h1>Expenses Tracker</h1></li>
+                
+            </ul>
+        </div>
+    </nav>
+    <nav id='menu'>
+    <input type='checkbox' id='responsive-menu' onclick='updatemenu()'><label></label>
+    <ul>
+      <li><a href='/'>Home</a></li>
+      <li><a href='/dashboard'>Dashboard</a></li>
+      <li><a class='dropdown-arrow' href='#'>Manage Finance</a>
+        <ul class='sub-menus'>
+          <li><a href='/expenses'>Expense Tracking</a></li>
+          <li><a href='/budget'>Budget Management</a></li>
+          <li><a href='/transactionhistory'>Transaction History</a></li>
+          <li><a href='/datainsights'>Data Insights</a></li>
+        </ul>
+      </li>
+      <li><a href='/auth/logout'>Logout</a></li>
+      
+    </ul>
+  </nav>
+    
+    <main>
+        <div class="container2">
+             <h2>Budgets</h2>
+                {{#each budgets3}}
+                
+                <div class="chart">
+                <canvas id="myChart{{id}}"></canvas>
+                </div>
+                
+                   <script>
+                    var ids = "{{id}}";
+                    var ctx = document.getElementById('myChart' + ids);
+                    new Chart(ctx, {
+                        type: 'bar',
+                        data: {
+                        labels: ['Total Income', 'Monthly Budget', 'Monthly Budget Limits'],
+                        datasets: [{
+                            label: 'Budgets for {{category}} on {{date}}',
+                            data: ['{{totalincome}}', '{{monthlybudget}}', '{{monthlybudgetlimits}}'],
+                            borderWidth: 1
+                        }]
+                        },
+                        options: {
+                        scales: {
+                            y: {
+                            beginAtZero: true
+                            }
+                        }
+                        }
+                    });
+                </script>
+                <script>
+                    total+={{totalincome}};
+                </script>
+               <br><hr><br>
+                {{/each}}
+                <br><br>
+                <h2>Expenses</h2>
+                <br>
+                {{#each expenses2}}
+                <div class="chart">
+                <canvas id="myChart2{{id}}"></canvas>
+                </div>
+                 <script>
+                    var ids2 = "{{id}}";
+                    var ctx2 = document.getElementById('myChart2' + ids2);
+                    new Chart(ctx2, {
+                        type: 'bar',
+                        data: {
+                        labels: ['Amount'],
+                        datasets: [{
+                            label: '${{amount}} spent for {{category}} on {{date}}',
+                            data: ['{{amount}}'],
+                            borderWidth: 1
+                        }]
+                        },
+                        options: {
+                        scales: {
+                            y: {
+                            beginAtZero: true
+                            }
+                        }
+                        }
+                    });
+                </script>
+                <script>
+                    expenses+= {{amount}};
+                </script>
+                {{/each}}
+               <br><hr><br>
+               <h2>Spenditure Expenses</h2>
+               <div class="chart">
+                <canvas id="myChartpie"></canvas>
+                </div>
+                 <script>
+                    var ctx3 = document.getElementById('myChartpie');
+                    new Chart(ctx3, {
+                        type: 'pie',
+                        data: {
+                        labels: ['Total Expenses','Total Income'],
+                        datasets: [{
+                            label: 'Amount',
+                            data: [expenses,total],
+                            borderWidth: 1
+                        }]
+                        },
+                        options: {
+                        scales: {
+                            y: {
+                            beginAtZero: true
+                            }
+                        }
+                        }
+                    });
+                </script>
+                <br><hr><br>
+                <h2><font color="#054878"><i class="fa fa-bell" aria-hidden="true"></i></font> Alerts</h2>
+                <br>
+                <font size="4">
+                <p>You have spend so far <script>document.write(Math.floor((expenses/total)*100));</script>% of your total income</p>
+                <br>
+                <p>You have spent total of $<script>document.write(expenses);</script> out of $<script>document.write(total);</script></p>
+                <br>
+                <p>You have remaining of $<script>document.write(total-expenses);</script> from your budget</p>
+                </font>
+                <br><hr><br>
+                <center><a href="javascript:window.history.back();"><button>Go Back</button></a></center>
+                
+        </div>
+    </main>
+
+</body>
+</html>

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Expenses Tracker</title>
+    <link rel="stylesheet" href="/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+   <script>
+        var total=0;
+        var expenses=[];
+        var categories=[];
+        var cnt = -1;
+        var totalspend=0;
+        var totalincome;
+   </script>
+</head>
+<body>
+    <nav class="nav2">
+        <div class="container2">
+            <ul>
+                <li> <h1>Transaction History</h1></li>
+            </ul>
+        </div>
+    </nav>
+    <nav id='menu'>
+    <input type='checkbox' id='responsive-menu' onclick='updatemenu()'><label></label>
+    <ul>
+      <li><a href='/'>Home</a></li>
+      <li><a href='/dashboard'>Dashboard</a></li>
+      <li><a class='dropdown-arrow' href='#'>Manage Finance</a>
+        <ul class='sub-menus'>
+          <li><a href='/expenses'>Expense Tracking</a></li>
+          <li><a href='/budget'>Budget Management</a></li>
+          <li><a href='/transactionhistory'>Transaction History</a></li>
+          <li><a href='/datainsights'>Data Insights</a></li>
+        </ul>
+      </li>
+      <li><a href='/auth/logout'>Logout</a></li>
+      
+    </ul>
+  </nav>
+    <br><br>
+    <div class="rightbtn"><a href="javascript:window.print();"><button><i class="fa fa-print"></i> Print</button></a></div>
+    <br><br>
+    <main>
+      <br><br>
+      <div class="container2">
+      <h2>Monthly Budget</h2>
+      {{#each budgets3}}
+      <table>
+        <thead>
+            <tr>
+            <th>Monthly Income</th>
+            <th>Monthly Budget Limit</th>
+            <th>Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+            <td data-column="Monthly Income">{{monthlyincome}}</td>
+            <td data-column="Monthly Budget Limit">{{monthlybudgetlimit}}</td>
+            <td data-column="Date">
+                <script>
+                    var dt1 = "{{date}}"
+                    dt1 = dt1.substring(0,15);
+                    document.write(dt1);
+                </script>
+            </td>
+            </tr>
+        </tbody>
+     </table>
+    {{/each}}
+    {{#each budgets3}}
+        <script>
+            total+=Number("{{monthlybudgetlimit}}");
+            totalincome = Number("{{monthlyincome}}");
+        </script>
+    {{/each}}       
+    <br><hr><br>
+    <h2>Spending History</h2>       
+    <table>
+        <thead>
+            <tr>
+            <th>Category</th>
+            <th>Amount Spent</th>
+            <th>Date</th>
+            </tr>
+        </thead>
+        <tbody>        
+        {{#each expenses2}}
+            <script>
+                cnt++;
+                expenses[cnt] = "{{amount}}";
+                categories[cnt] = "{{category}}";
+                totalspend+=Number("{{amount}}");
+            </script>
+            <tr>
+            <td data-column="Category">{{category}}</td>
+            <td data-column="Amount Spent">{{amount}}</td>
+            <td data-column="Date">
+                <script>
+                    var dt2 = "{{date}}"
+                    dt2 = dt2.substring(0,15);
+                    document.write(dt2);
+                </script>
+            </td>
+            </tr>
+        {{/each}}
+        </tbody>
+        </table>
+        <br><hr><br>
+        <h2>Balance</h2>
+        <table>
+        <thead>
+            <tr>
+            <th>Monthly Income</th>
+            <th>Total Spent</th>
+            <th>Balance</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+            <td data-column="Monthly Income"><script>document.write(totalincome);</script></td>
+            <td data-column="Total Spent"><script>document.write(totalspend);</script></td>
+            <td data-column="Balance">
+                <script>
+                    var balance = totalincome-totalspend;
+                    document.write(balance);
+                </script>
+            </td>
+            </tr>
+        </tbody>
+     </table>
+    </div>
+</main>
+</body>
+</html>

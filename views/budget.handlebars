@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Budget</title>
+    <link rel="stylesheet" href="/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script>
+        var submitfrm = false;
+    </script>
+</head>
+<body>
+    <nav class="nav2">
+        <div class="container2">
+            <ul>
+                <li><h1>Budget</h1></li>
+                
+            </ul>
+        </div>
+    </nav>
+    <nav id='menu'>
+    <input type='checkbox' id='responsive-menu' onclick='updatemenu()'><label></label>
+    <ul>
+      <li><a href='/'>Home</a></li>
+      <li><a href='/dashboard'>Dashboard</a></li>
+      <li><a class='dropdown-arrow' href='#'>Manage Finance</a>
+        <ul class='sub-menus'>
+          <li><a href='/expenses'>Expense Tracking</a></li>
+          <li><a href='/budget'>Budget Management</a></li>
+          <li><a href='/transactionhistory'>Transaction History</a></li>
+          <li><a href='/datainsights'>Data Insights</a></li>
+        </ul>
+      </li>
+      <li><a href='/auth/logout'>Logout</a></li>
+    </ul>
+  </nav>
+    <br><br>
+    <div class="rightbtn"><a href="/dashboard"><button>View Dashboard</button></a></div>
+    <div class="rightbtn"><a href="/expenses"><button>Add New Expense</button></a></div>
+    <br><br>
+    <main>
+        <center>
+        <div class="container2">
+           <script>
+            var d = "{{budgets2.date}}";
+           </script>
+           <h2>Budget for <script>document.write(d.substring(0,15));</script></h2>
+           <br><hr><br>
+            <form method="post" action="/budget/createbudget" class="post-form" id="frm">
+                <div class="form-group">
+                    <label for="title">Your Monthly Income:</label>
+                    <input  type="number" step="0.01" id="monthlyincome" name="monthlyincome" value="{{budgets2.monthlyincome}}" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="title">Your Monthly Budget Limit:</label>
+                    <input  type="number" step="0.01" id="monthlybudgetlimit" name="monthlybudgetlimit" value="{{budgets2.monthlybudgetlimit}}" required>
+                </div>
+            </form>
+            <button onclick="validateform()">Submit</button>
+        </div>
+        </center>
+    </main>
+
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="close2()">&times;</span>
+            <div id="msg"></div>
+        </div>
+    </div>
+
+<script>
+    function validateform(){
+        var income = document.getElementById("monthlyincome").value;
+        var budgetlimit = document.getElementById("monthlybudgetlimit").value;
+        if(Number(budgetlimit)>Number(income)){
+            msg("Your monthly budget limit should be less then your monthly income !");
+            submitfrm = false;
+            shwmodal();
+        }
+        else {
+            msg("Budget updated successfully !");
+            submitfrm = true;
+            shwmodal();  
+        }
+    }
+</script>
+<script src="/script.js"></script>
+
+</body>
+</html>

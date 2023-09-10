@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Budget</title>
+    <link rel="stylesheet" href="/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script>
+        var submitfrm = false;
+        var cat;
+    </script>
+</head>
+<body onload="setcat()">
+    <nav class="nav2">
+        <div class="container2">
+            <ul>
+                <li><h1>Edit Expense</h1></li>
+                
+            </ul>
+        </div>
+    </nav>
+    <nav id='menu'>
+    <input type='checkbox' id='responsive-menu' onclick='updatemenu()'><label></label>
+    <ul>
+      <li><a href='/'>Home</a></li>
+      <li><a href='/dashboard'>Dashboard</a></li>
+      <li><a class='dropdown-arrow' href='#'>Manage Finance</a>
+        <ul class='sub-menus'>
+          <li><a href='/expenses'>Expense Tracking</a></li>
+          <li><a href='/budget'>Budget Management</a></li>
+          <li><a href='/transactionhistory'>Transaction History</a></li>
+          <li><a href='/datainsights'>Data Insights</a></li>
+        </ul>
+      </li>
+      <li><a href='/auth/logout'>Logout</a></li>
+      
+    </ul>
+  </nav>
+    <br><br>
+    <div class="rightbtn"><a href="/dashboard"><button>View Dashboard</button></a></div>
+    <br><br>
+    <main>
+        <center>
+        <br><br>
+        <h2>Edit Expense</h2>
+        <br><hr><br>
+        {{#each expenses2}}
+        <div class="container2">
+            <form method="post" action="/expenses/editexpenses/{{id}}" class="post-form" id="frm">
+                <div class="form-group">
+                    <label for="title">Select a Category for your Expenses:</label>
+                    <div class="select">
+                        <select size="1" id="categories" name="categories" onchange="setcategoryvalue()">
+                            <option value="1">Food and Groceries</option>
+                            <option value="2">Entertainment</option>
+                            <option value="3">Housing or Rent</option>
+                            <option value="4">Mortgage</option>
+                            <option value="5">Transportation and Car Insurance</option>
+                            <option value="6">Electric Bill</option>
+                            <option value="7">Water Bill</option>
+                            <option value="8">Travel Expenses</option>
+                            <option value="9">Utility Bills</option>
+                            <option value="10">Cell Phone</option>
+                            <option value="11">Childcare and School Costs</option>
+                            <option value="12">Pet Food and Care</option>
+                            <option value="13">Pet Insurance</option>
+                            <option value="14">Clothing and Personal Upkeep</option>
+                            <option value="15">Health Insurance</option>
+                            <option value="16">Monthly Memberships and Subscriptions</option>
+                            <option value="17">Life Insurance</option>
+                            <option value="18">Student Loans</option>
+                            <option value="19">Credit Card Debt</option>
+                            <option value="20">Retirement</option>
+                            <option value="21">Emergency Fund</option>
+                            <option value="22">Large Purchases</option>
+                            <option value="23">Other Expenses</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="title">Amount you want to spent:</label>
+                    <input type="number" step="0.01" id="amount" name="amount" value="{{amount}}" required>
+                </div>
+                <div class="form-group">
+                    <label for="title">Expense Description:</label>
+                    <textarea style="height:100px;" type="text" id="description" name="description" required>{{description}}</textarea>
+                </div>
+                <input type="hidden" id="selectedcategory" name="selectedcategory">
+                <input type="hidden" id="expenseid" name="expenseid" value="{{id}}">
+            </form>
+            <button onclick="javascript:window.history.back()">Go Back</button>&nbsp;&nbsp;<button onclick="validateform()">Submit</button>
+        </div>
+        <script>
+            cat = "{{category}}";
+        </script>
+        {{/each}}
+        </center>
+    </main>
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="close2()">&times;</span>
+            <div id="msg"></div>
+        </div>
+    </div>
+    <script>
+        function validateform(){
+            msg("Expense updated successfully !");
+            submitfrm = true;
+            shwmodal();  
+        }
+        function setcat(){
+            sel = document.getElementById("categories")
+            for(i=0; i<sel.options.length; i++){
+                if(sel.options[i].innerText==cat){
+                    sel.selectedIndex = i;
+                    document.getElementById("selectedcategory").value = cat;
+                    break;
+                }
+            }
+        }
+        setcategoryvalue();
+    </script>
+    <script src="/script.js"></script>
+</body>
+</html>

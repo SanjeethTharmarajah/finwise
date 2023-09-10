@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Expenses Tracker</title>
+    <link rel="stylesheet" href="/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+   <script>
+        var total=0;
+        var expenses=[];
+        var categories=[];
+        var cnt = -1;
+        var totalspend=0;
+        var totalincome;
+   </script>
+</head>
+<body>
+    <nav class="nav2">
+        <div class="container2">
+            <ul>
+                <li> <h1>Dashboard</h1></li>
+                
+            </ul>
+        </div>
+    </nav>
+    <nav id='menu'>
+    <input type='checkbox' id='responsive-menu' onclick='updatemenu()'><label></label>
+    <ul>
+      <li><a href='/'>Home</a></li>
+      <li><a href='/dashboard'>Dashboard</a></li>
+      <li><a class='dropdown-arrow' href='#'>Manage Finance</a>
+        <ul class='sub-menus'>
+          <li><a href='/expenses'>Expense Tracking</a></li>
+          <li><a href='/budget'>Budget Management</a></li>
+          <li><a href='/transactionhistory'>Transaction History</a></li>
+          <li><a href='/datainsights'>Data Insights</a></li>
+        </ul>
+      </li>
+      <li><a href='/auth/logout'>Logout</a></li>
+      
+    </ul>
+  </nav>
+    
+    <main>
+      <br><br>
+      <div  style="margin:25px; padding:25px;">
+        <h3>Step 1: Add Budget <a href="/budget">here</a></h3>
+        <br>
+        <h3>Step 2: Add Expenses <a href="/expenses">here</a></h3>
+        <br>
+        <h3>Step 3: After adding Budget and Expenses check dashboard again</h3>
+      </div>
+       <br><hr><br>
+        <div class="container2">
+             <h2>Budget</h2>
+                {{#each budgets3}}
+      
+                <div class="chart">
+                <canvas id="myChart"></canvas>
+                </div>
+                
+                   <script>
+                    totalincome=Number("{{monthlyincome}}");
+                    var dt = "{{date}}"
+                    dt = dt.substring(0,15);
+                    dt = "Budget for " + dt;
+                    var ids = "{{id}}";
+                    var ctx = document.getElementById('myChart');
+                    new Chart(ctx, {
+                        type: 'bar',
+                        data: {
+                        labels: ['Monthly Income', 'Monthly Budget Limit'],
+                        datasets: [{
+                            label: dt,
+                            data: ['{{monthlyincome}}', '{{monthlybudgetlimit}}'],
+                            borderWidth: 1
+                        }]
+                        },
+                        options: {
+                        scales: {
+                            y: {
+                            beginAtZero: true
+                            }
+                        }
+                        }
+                    });
+                </script>
+                <script>
+                    total+=Number("{{monthlybudgetlimit}}");
+                </script>
+               <br><hr><br>
+                {{/each}}
+                <br><br>
+                <h2>Expenses</h2>
+                <br>
+                {{#each expenses2}}
+                <script>
+                    cnt++;
+                    expenses[cnt] = "{{amount}}";
+                    categories[cnt] = "{{category}}";
+                    totalspend+=Number("{{amount}}");
+                </script>
+                {{/each}}
+               
+                <div class="chart">
+                <canvas id="myChart2"></canvas>
+                </div>
+                 <script>
+                    var tp;
+                    tp = "Budget of $" + totalspend;
+                    var ctx2 = document.getElementById('myChart2');
+                    new Chart(ctx2, {
+                        type: 'bar',
+                        data: {
+                        labels: categories,
+                        datasets: [{
+                            label: tp,
+                            data: expenses,
+                            borderWidth: 1
+                        }]
+                        },
+                        options: {
+                        scales: {
+                            y: {
+                            beginAtZero: true
+                            }
+                        }
+                        }
+                    });
+                </script>
+               <br><hr><br>
+               <h2>Spenditure Expenses</h2>
+               <div class="chart">
+                <canvas id="myChartpie"></canvas>
+                </div>
+                 <script>
+                    var ctx3 = document.getElementById('myChartpie');
+                    new Chart(ctx3, {
+                        type: 'pie',
+                        data: {
+                        labels: ['Total Expenses','Total Income'],
+                        datasets: [{
+                            label: 'Amount',
+                            data: [totalspend,total],
+                            borderWidth: 1
+                        }]
+                        },
+                        options: {
+                        scales: {
+                            y: {
+                            beginAtZero: true
+                            }
+                        }
+                        }
+                    });
+                </script>
+                <br><hr><br>
+                <h2><font color="#054878"><i class="fa fa-bell" aria-hidden="true"></i></font> Alerts</h2>
+                <br>
+                <font size="4">
+                <p>You have spend so far <script>document.write(Math.floor((totalspend/total)*100));</script>% of your total monthly budget limit.</p>
+                <br>
+                <p>You have spent total of $<script>document.write(totalspend);</script> out of $<script>document.write(total);</script> from your total monthly budget limit.</p>
+                <br>
+                <p>You have remaining of $<script>document.write(total-totalspend);</script> from your total monthly budget limit.</p>
+                <br>Your savings for this month from your total monthly income is $<script>document.write(totalincome-totalspend);</script> from $<script>document.write(totalincome);</script> of your total income.
+                </font>
+        </div>
+    </main>
+
+</body>
+</html>
