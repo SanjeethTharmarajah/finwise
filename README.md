@@ -1,5 +1,7 @@
 # Finwise: A Monthly Finance Budget Software
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 ## About Finwise
 
 Finwise is a finance management system that is a critical tool for individuals, businesses, and organizations to effectively oversee and control their financial resources. It encompasses a wide range of processes and tools designed to optimize financial performance and achieve specific financial goals. These systems typically involve budgeting management, expense tracking, investment management, and transaction history. By meticulously tracking budget & expenses; Finwise finance management systems provide valuable insights for decision-makers to make informed choices about financial planning. Whether for personal financial stability, business growth, or nonprofit sustainability, a robust finance management system is an indispensable asset in today's complex financial landscape, helping individuals and entities navigate the intricacies of fiscal responsibility and success.
