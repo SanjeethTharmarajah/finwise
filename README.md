@@ -27,6 +27,12 @@ Users can also edit or delete expenses data or modify budgets data anytime of th
 
 Stores user login info in Express Sessions for login authencation.
 
+Keeping simplicity in mind, Finwise uses less user effort to use it.
+
+Finwise has simple user interface and easy to use application.
+
+Finwise is Responsive UI and mobile friendly aswell.
+
 ## Installtion
 
 npm init -y
