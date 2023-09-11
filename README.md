@@ -27,7 +27,7 @@ Users can also edit or delete expenses data or modify budgets data anytime of th
 
 ## Installtion
 
-npm init
+npm init -y
 
 npm install handlebars@4.7.6 express@4.17.1 express-session@1.17.1 express-handlebars@5.2.0 body-parser sequelize mysql2 bcrypt dotenv
 
