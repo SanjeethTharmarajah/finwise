@@ -41,12 +41,28 @@ Finwise is Responsive UI and mobile friendly aswell.
 
 ## Installtion
 
-npm init -y
+<pre><code>npm init -y</code></pre>
 
-npm install handlebars@4.7.6 express@4.17.1 express-session@1.17.1 express-handlebars@5.2.0 body-parser sequelize mysql2 bcrypt dotenv
+<pre><code>npm install handlebars@4.7.6 </code></pre>
 
-npm start
+ <pre><code>npm install express@4.17.1</code></pre>
+ 
+ <pre><code>npm install express-session@1.17.1</code></pre>
+ 
+ <pre><code>npm install express-handlebars@5.2.0</code></pre>
+ 
+ <pre><code>npm install body-parser</code></pre>
+ 
+ <pre><code>npm install sequelize</code></pre>
+ 
+ <pre><code>npm install mysql2</code></pre>
+ 
+ <pre><code>npm install bcrypt</code></pre>
+ 
+ <pre><code>npm install dotenv</code></pre>
 
+ <pre><code>npm start</code></pre>
+ 
 ## Usage
 
 ![image](https://github.com/SanjeethTharmarajah/finwise/assets/130941252/52942840-c061-4641-bdae-7252c1508771)
