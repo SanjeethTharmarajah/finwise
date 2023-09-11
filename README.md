@@ -25,6 +25,8 @@ Finwise can calculate monthly budgets and displays graphs based on user inputs.
 
 Users can also edit or delete expenses data or modify budgets data anytime of the month.
 
+Stores user login info in Express Sessions for login authencation.
+
 ## Installtion
 
 npm init -y
