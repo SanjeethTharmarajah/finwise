@@ -36,3 +36,8 @@ npm start
 ## Usage
 
 ![image](https://github.com/SanjeethTharmarajah/finwise/assets/130941252/52942840-c061-4641-bdae-7252c1508771)
+
+Please use below link to see Finwise in action
+
+https://finwise2-92f0efdf4e68.herokuapp.com/
+
