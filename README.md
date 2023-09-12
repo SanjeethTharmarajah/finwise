@@ -39,3 +39,7 @@ npm install handlebars@4.7.6 express@4.17.1 express-session@1.17.1 express-handl
 ## Usage
 
 ![image](https://github.com/SanjeethTharmarajah/finwise/assets/130941252/e8d3dac7-3c8e-47c8-9b99-e1ad5674fbab)
+
+Finwise can be seen in action in below link
+
+https://finwise2-92f0efdf4e68.herokuapp.com/
