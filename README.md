@@ -25,6 +25,10 @@ Finwise can calculate monthly budgets and displays graphs based on user inputs.
 
 Users can also edit or delete expenses data or modify budgets data anytime of the month.
 
+Keeping simplicity in mind, Finwise is very simple to use app.
+
+Finwise is user friendly Responsive UI and mobile friendly app.
+
 ## Installtion
 
 npm init
@@ -33,3 +37,5 @@ npm install handlebars@4.7.6 express@4.17.1 express-session@1.17.1 express-handl
 
 
 ## Usage
+
+![image](https://github.com/SanjeethTharmarajah/finwise/assets/130941252/e8d3dac7-3c8e-47c8-9b99-e1ad5674fbab)
