@@ -30,6 +30,14 @@ body, h1, h2, h3, p, ul, li {
 	width:50%;
 	height:auto;
   }
+  .chart2{
+	position:relative;
+	top:25px;
+	margin:25px;
+	display:inline-block;
+	width:25%;
+	height:auto;
+  }
   .nav2 {
     background-color: #054878;
     color: #fff;
@@ -110,7 +118,7 @@ body, h1, h2, h3, p, ul, li {
   input[type="number"],
   input[type="password"],
   textarea {
-    width:30%;
+    width:40%;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 3px;
@@ -357,9 +365,45 @@ td, th {
 	border: 1px solid #ccc; 
 	text-align: left; 
 	font-size: 18px;
-	}
+}
 
-
+.leftcolumn {
+	position:relative;
+	width:40%;
+	margin:25px;
+	padding:25px;
+	display:inline-block;
+}
+.rightcolumn {
+	position:relative;
+	width:40%;
+	margin:25px;
+	padding:25px;
+	display:inline-block;
+}
+.logo2{
+	width:100%;
+	height:auto;
+}
+.login-form {
+    
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+.button2 {
+	background-color: white;
+	border:1px solid #054878;
+	border-radius:5px;
+	color:#054878;
+}
+.button2:hover {
+	background-color: #054878;
+	border:1px solid white;
+	border-radius:5px;
+	color:white;
+}
 @media 
 only screen and (max-width: 760px),
 (min-device-width: 768px) and (max-device-width: 1024px)  {

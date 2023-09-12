@@ -73,7 +73,7 @@ router.get('/dashboard', async (req, res) => {
     const budgets3 = budgets.map((budgets) =>
     budgets.get({ plain: true })
     );
-    res.render('dashboard', { budgets3, expenses2 });
+    res.render('dashboard', { budgets3, expenses2,  postUser});
   }
   else {
     // Handle case where userId is undefined

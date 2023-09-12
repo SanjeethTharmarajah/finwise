@@ -17,11 +17,17 @@
         <center>
         <div class="container2">
           
-            {{#if error}}
-            <p class="error">{{error}}</p>
-            {{/if}}
-            <br>
-            <form method="post" action="/auth/login" class="login-form">
+           
+            <div class="leftcolumn">
+                <h1>Welcome To</h1>
+                <img src="/assets/logo.jpg" class="logo2">
+            </div>
+            <div class="rightcolumn">
+                {{#if error}}
+                <p class="error">{{error}}</p>
+                {{/if}}
+                <br>
+                <form method="post" action="/auth/login" class="login-form">
                 <div class="form-group">
                     <label for="username">Username:</label>
                     <input type="text" id="username" name="username" required>
@@ -32,7 +38,10 @@
                 </div>
                 <button type="submit">Login</button>
             </form>
-            <center><br><br><font color="black">-OR-</font><br><br><a href="/auth/signup"><button>Sign Up Here</button></a></center>
+            <center><br><br><font color="black">-OR-</font><br><br><a href="/auth/signup"><button class="button2">Sign Up Here</button></a></center>
+            </div>
+            
+            
         </div>
         </center>
     </main>
