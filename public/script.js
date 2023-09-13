@@ -12,7 +12,7 @@ function close2(){
     var frm1 =  document.getElementById("frm");
     var modal = document.getElementById("myModal");
     modal.style.display = "none";
-    if(submitfrm=true){
+    if(submitfrm==true){
         frm1.submit();
     }
 }
