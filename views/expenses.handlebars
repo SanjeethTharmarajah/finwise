@@ -101,9 +101,18 @@
 
     <script>
         function validateform(){
-            msg("Expense added successfully !");
-            submitfrm = true;
-            shwmodal();  
+            var a = document.getElementById("amount").value;
+            var d = document.getElementById("description").value;
+            if(a != "" && d != ""){
+                msg("Expense added successfully !");
+                submitfrm = true;
+                shwmodal();
+            }
+            else {
+                msg("You should enter all fields !");
+                submitfrm = false;
+                shwmodal();
+            } 
         }
     </script>
     <script src="/script.js"></script>
