@@ -333,8 +333,8 @@ body, h1, h2, h3, p, ul, li {
 	position:relative;
 	top: -30px;
 	right:-25px;
-	padding-left:5px;
-	padding-right:5px;
+	padding-left:10px;
+	padding-right:10px;
   }
   
   .close:hover,
