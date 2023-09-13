@@ -72,8 +72,8 @@
     function validateform(){
         var income = document.getElementById("monthlyincome").value;
         var budgetlimit = document.getElementById("monthlybudgetlimit").value;
-        if(Number(budgetlimit)>Number(income)){
-            msg("Your monthly budget limit should be less then your monthly income !");
+        if(income =="" || budgetlimit =="" || Number(budgetlimit)>Number(income)){
+            msg("Your monthly budget limit should be less then your monthly income ! <br><br> Also make sure you have entered all fields !");
             submitfrm = false;
             shwmodal();
         }
