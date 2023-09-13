@@ -19,7 +19,14 @@ router.post('/signup', async (req, res) => {
       username,
       password: hashedPassword
     });
-    res.redirect('/auth/login');
+    req.session.userId = user.id;
+    req.session.userName = username;
+    req.session.save(() => {
+      req.session.userId = user.id;
+      req.session.userName = username;
+    });
+
+    res.redirect('/dashboard');
   } catch (error) {
     res.render('signup', { error: 'Username already exists' });
   }
